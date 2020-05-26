@@ -1,6 +1,8 @@
 import pandas as pd 
 import numpy as np 
 import scipy as sp 
+import matplotlib as plt 
+import seaborn as sns 
 
 print("Hello, World!")
 
@@ -10,6 +12,7 @@ data = {'name': ['Jason', 'Molly', 'Tina', 'Jake', 'Amy'],
         'coverage': [25, 94, 57, 62, 70]}
 df = pd.DataFrame(data, index = ['Cochice', 'Pima', 'Santa Cruz', 'Maricopa', 'Yuma'])
 
-df
-
 print(df)
+
+sns.barplot(x = "reports", y = "coverage")
+
