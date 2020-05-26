@@ -3,6 +3,7 @@ import numpy as np
 import scipy as sp 
 import matplotlib.pyplot as plt 
 import seaborn as sns 
+from scipy.spatial import distance
 
 print("Hello, World!")
 
@@ -14,6 +15,14 @@ df = pd.DataFrame(data, index = ['Cochice', 'Pima', 'Santa Cruz', 'Maricopa', 'Y
 
 print(df)
 
+print(distance.euclidean([1, 0, 0], [0, 1, 0]))
 sns.barplot(x = "reports", y = "coverage", data=df)
 
 plt.show()
+
+def find_nearest_centroid(df: pd.DataFrame, centroids):
+	prev_centroids = [np.random.choice]
+	df_copy = df.copy()
+
+	i = 0
+
