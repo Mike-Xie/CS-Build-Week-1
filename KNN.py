@@ -1,7 +1,7 @@
 import pandas as pd 
 import numpy as np 
 import scipy as sp 
-import matplotlib as plt 
+import matplotlib.pyplot as plt 
 import seaborn as sns 
 
 print("Hello, World!")
@@ -14,5 +14,6 @@ df = pd.DataFrame(data, index = ['Cochice', 'Pima', 'Santa Cruz', 'Maricopa', 'Y
 
 print(df)
 
-sns.barplot(x = "reports", y = "coverage")
+sns.barplot(x = "reports", y = "coverage", data=df)
 
+plt.show()
