@@ -36,11 +36,9 @@ class K_means:
 		# because easier to test 
 		for i in range(self.k):
 			self.centroids[i] = data[i]
-
 		# outer loop for max iterations
 		for i in range(self.max_iterations):
 			self.classifications = {}
-
 			for i in range (self.k):
 				self.classifications[i] = []
 			# make a list of the distances from each item in data to the centroids
@@ -50,13 +48,11 @@ class K_means:
 				distance_list: List = [np.linalg.norm(item-self.centroids[centroid]) for centroid in self.centroids]
 				closest: int = distance_list.index(min(distance_list)) 
 				self.classifications[closest].append(item)
-
 			# make copy of old centroids
 			prev_centroids = dict(self.centroids)
 			# update new centroids 
 			for classif in self.classifications:
 				self.centroids[classif] = np.average(self.classifications[classif], axis=0)
-
 			# code to exit if has converged to tolerance
 			is_stable: bool = True
 			for centroid in self.centroids:
@@ -69,8 +65,32 @@ class K_means:
 			if is_stable:
 				break 
 
-clf = K_means()
+	def predict(self, item):
+		distance_list: List = [np.linalg.norm(item-self.centroids[centroid]) for centroid in self.centroids]
+		closest: int = distance_list.index(min(distance_list)) 
+		return closest 
+
+# instantiate and fit 
+clf = K_means(k=2)
 clf.fit(X)
+print(clf.centroids)
+
+# plot centroids
+for centroid in clf.centroids:
+    plt.scatter(clf.centroids[centroid][0], clf.centroids[centroid][1],
+                marker="o", color="k", s=150, linewidths=5)
+
+# clean up later, should be a 1 or 2 liner in Seaborn
+colors = ["g","r","b"]
+
+# plot classifications of points around centroids 
+for classification in clf.classifications:
+    color = colors[classification]
+    for featureset in clf.classifications[classification]:
+        plt.scatter(featureset[0], featureset[1], marker="x", color=color, s=150, linewidths=5)
+ 
+
+plt.show()
 end_time = time.time()
 print (f"runtime: {end_time - start_time} seconds")
 
