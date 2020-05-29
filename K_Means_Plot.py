@@ -1,10 +1,12 @@
-from k_means import K_Means
+from k_means import K_means
 import numpy as np 
+import time
+import matplotlib.pyplot as plt 
 
-X = np.array([[4,25],[24,94],[31,57],[2,62],[9,99],[3,70]])
+X = np.array([[4,25],[24,94],[31,57],[2,62],[3,70]])
 
 # instantiate and fit 
-clf = K_means(k=4)
+clf = K_means(k=3)
 clf.fit(X)
 print(type(clf.centroids))
 print(clf.centroids)

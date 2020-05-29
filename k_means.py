@@ -1,21 +1,8 @@
 import pandas as pd 
 import numpy as np 
-import scipy as sp
-import time
-import matplotlib.pyplot as plt 
-import seaborn as sns 
 from scipy.spatial import distance
 from typing import List, Dict, Optional 
 
-start_time = time.time() 
-# test data
-data = {'name': ['Jason', 'Molly', 'Tina', 'Jake', 'Amy'], 
-        'year': [2012, 2012, 2013, 2014, 2014], 
-        'reports': [4, 24, 31, 2, 3],
-        'coverage': [25, 94, 57, 62, 70]}
-df = pd.DataFrame(data, index = ['Cochice', 'Pima', 'Santa Cruz', 'Maricopa', 'Yuma'])
-
-# create a class 
 class K_means:
 	def __init__(self, k: int=3, tolerance: float=0.001, max_iterations: int=100):
 		self.k = k
