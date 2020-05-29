@@ -1,4 +1,3 @@
-import pandas as pd 
 import numpy as np 
 from scipy.spatial import distance
 from typing import List, Dict, Optional 
@@ -9,7 +8,7 @@ class K_means:
 		self.tolerance = tolerance
 		self.max_iterations = max_iterations
 
-	def fit(self, data) -> None:
+	def fit(self, data: List[List[int]]) -> None:
 		# put centroids in key value pair
 		self.centroids: Dict = {}
 		# assign some starting ones, non-randomized, easier to test
@@ -45,7 +44,7 @@ class K_means:
 			if is_stable:
 				break 
 
-	def predict(self, item) -> int:
+	def predict(self, item: List[int]) -> int:
 		distance_list: List = [np.linalg.norm(item-self.centroids[centroid]) for centroid in self.centroids]
 		closest: int = distance_list.index(min(distance_list)) 
 		return closest 

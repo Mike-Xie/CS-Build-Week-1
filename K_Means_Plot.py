@@ -3,6 +3,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt 
 
+start_time = time.time()
 X = np.array([[4,25],[24,94],[31,57],[2,62],[3,70]])
 
 # instantiate and fit 
